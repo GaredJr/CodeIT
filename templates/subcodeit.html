@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}/code/{{ name }} - CodeIT{% endblock %}
+
+{% block content %}
+<section class="feed-header">
+    <h1>/code/{{ name }}</h1>
+    <p>Posts about {{ name }}.</p>
+</section>
+
+<article class="post-card">
+    <div class="post-meta">
+        <span>/code/{{ name }}</span>
+        <span>Posted by @example</span>
+        <span class="badge">Discussion</span>
+    </div>
+
+    <h2>Welcome to /code/{{ name }}</h2>
+    <p>This is where posts for this subcodeit will show.</p>
+</article>
+{% endblock %}

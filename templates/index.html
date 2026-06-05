@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}CodeIT - Home{% endblock %}
+
+{% block content %}
+<section class="feed-header">
+    <h1>Home</h1>
+
+    <div class="feed-tabs">
+        <button class="active">Hot</button>
+        <button>New</button>
+        <button>Top</button>
+        <button>Unanswered</button>
+        <button>Repos</button>
+    </div>
+</section>
+
+<section class="feed">
+    {% for post in posts %}
+        <article class="post-card">
+            <div class="post-meta">
+                <span>{{ post.subcodeit }}</span>
+                <span>Posted by @{{ post.author }}</span>
+                <span class="badge">{{ post.type }}</span>
+            </div>
+
+            <h2>{{ post.title }}</h2>
+
+            <div class="code-preview">
+                <div class="code-header">
+                    <span>example.js</span>
+                    <button>Copy</button>
+                </div>
+
+                <pre><code>function hello() {
+    console.log("CodeIT");
+}</code></pre>
+            </div>
+
+            <div class="tags">
+                {% for tag in post.tags %}
+                    <span>#{{ tag }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="post-actions">
+                <span>▲ {{ post.votes }}</span>
+                <span>💬 {{ post.comments }} comments</span>
+                <span>Save</span>
+            </div>
+        </article>
+    {% endfor %}
+</section>
+{% endblock %}

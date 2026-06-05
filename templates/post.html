@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Post - CodeIT{% endblock %}
+
+{% block content %}
+<article class="post-card full-post">
+    <div class="post-meta">
+        <span>/code/react</span>
+        <span>Posted by @gard</span>
+        <span class="badge">Question</span>
+    </div>
+
+    <h1>How do I stop this component from rerendering?</h1>
+
+    <p>
+        I have a search input that calls the API every time I type.
+        What is the cleanest debounce pattern here?
+    </p>
+
+    <div class="code-preview">
+        <div class="code-header">
+            <span>App.tsx</span>
+            <button>Copy</button>
+        </div>
+
+        <pre><code>const [query, setQuery] = useState("");
+
+useEffect(() => {
+    fetch(`/api/search?q=${query}`);
+}, [query]);</code></pre>
+    </div>
+</article>
+
+<section class="comments">
+    <h2>Comments</h2>
+
+    <article class="comment">
+        <strong>@devuser</strong>
+        <p>You should debounce the query before calling the API.</p>
+    </article>
+</section>
+{% endblock %}

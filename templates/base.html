@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}CodeIT{% endblock %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <a href="/" class="logo">
+            <img src="{{ url_for('static', filename='images/LogoWide.png') }}" alt="">
+            <!--
+            <span class="logo-icon">&lt;/&gt;</span>
+            <span>CodeIT</span>
+            -->
+        </a>
+
+        <input class="search" type="text" placeholder="Search posts, errors, repos, snippets...">
+
+        <nav class="topnav">
+            <a href="/create">Create</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
+
+    <div class="layout">
+        <aside class="sidebar">
+            <a href="/">Home</a>
+            <a href="#">Following</a>
+            <a href="#">Saved</a>
+
+            <div class="sidebar-title">Subcodeits</div>
+            <a href="/code/javascript">/code/javascript</a>
+            <a href="/code/python">/code/python</a>
+            <a href="/code/roblox">/code/roblox</a>
+            <a href="/code/react">/code/react</a>
+        </aside>
+
+        <main class="main">
+            {% block content %}{% endblock %}
+        </main>
+
+        <aside class="rightbar">
+            <div class="panel">
+                <h3>Trending</h3>
+                <a href="/code/python">/code/python</a>
+                <a href="/code/react">/code/react</a>
+                <a href="/code/linux">/code/linux</a>
+            </div>
+        </aside>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

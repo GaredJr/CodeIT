@@ -12,9 +12,10 @@ Kan legge ved kodesnippets, github repositories, osv.
  * Supabase for databaser og brukerlagring.
  * HTML / CSS, for frontend design
  * JS, for enkel backend
+ * Flask for koblinger
  * GIT + SSH, for syncing av siden mellom mac og server
  * GITHUB + KANBAN, for planlegging og backup
- * Adobe Photoshop / Illustrator for design av logo
+ * Adobe Photoshop / Illustrator for design av logo (Ikke relevant lol)
  * CHATGPT, for hjelp med planlegging og enkle elementer for raskere utvikling.
 
 ### FORMÅL

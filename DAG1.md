@@ -19,3 +19,20 @@ hostname -I
 ```
 
 Deretter, lagde jeg en ssh kobling mellom mac-en og serveren for mer lettvindt utvikling senere.
+
+### VIDERE
+
+Så satt jeg opp en lett KANBAN på github for hva jeg har lyst til å gjøre fremover, spesielt i dag, dette kan jeg endre på senere.
+
+Så startet jeg å jobbe med å lage en visuell profil for siden med hjelp av chatgpt, og fikk lagd en solid logo
+
+**FLASK SETUP**
+Nå var det på tide å sette opp noe ordentlig, og få prosjektet i gang.
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install flask
+pip freeze > requirements.txt
+```
+
+Etter en stund hadde jeg en grei placeholder for nettsiden

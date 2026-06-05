@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Create Post - CodeIT{% endblock %}
+
+{% block content %}
+<section class="create-post">
+    <h1>Create post</h1>
+
+    <form>
+        <label>
+            Subcodeit
+            <input type="text" placeholder="/code/react">
+        </label>
+
+        <label>
+            Title
+            <input type="text" placeholder="What are you working on?">
+        </label>
+
+        <label>
+            Post type
+            <select>
+                <option>Question</option>
+                <option>Snippet</option>
+                <option>Repository</option>
+                <option>Bug</option>
+                <option>Discussion</option>
+            </select>
+        </label>
+
+        <label>
+            Body
+            <textarea placeholder="Write your post using Markdown..."></textarea>
+        </label>
+
+        <button type="submit">Post</button>
+    </form>
+</section>
+{% endblock %}
