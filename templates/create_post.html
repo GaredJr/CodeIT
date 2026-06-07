@@ -12,10 +12,14 @@
     {% endif %}
 
     <form method="post" action="{{ url_for('create_post') }}">
-        <label>
-            Author
-            <input name="author" type="text" placeholder="anonymous" value="{{ form_data.get('author', '') }}">
-        </label>
+        {% if current_user %}
+            <p class="terminal-note">posting as @{{ current_user.username }}</p>
+        {% else %}
+            <label>
+                Author
+                <input name="author" type="text" placeholder="anonymous" value="{{ form_data.get('author', '') }}">
+            </label>
+        {% endif %}
 
         <label>
             Subcodeit
@@ -44,6 +48,11 @@
         <label>
             Tags
             <input name="tags" type="text" placeholder="react, typescript, frontend" value="{{ form_data.get('tags', '') }}">
+        </label>
+
+        <label>
+            GitHub repository
+            <input name="repository_url" type="url" placeholder="https://github.com/owner/repo" value="{{ form_data.get('repository_url', '') }}">
         </label>
 
         <label>

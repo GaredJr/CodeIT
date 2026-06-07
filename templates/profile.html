@@ -1,26 +1,32 @@
 {% extends "base.html" %}
 
-{% block title %}/code/{{ name }} - CodeIT{% endblock %}
+{% block title %}@{{ user.username }} - CodeIT{% endblock %}
 
 {% block content %}
-<section class="feed-header">
-    <p class="terminal-kicker">gard@codeit:~$ cd /code/{{ name }}{% if query %} && grep "{{ query }}"{% endif %}</p>
-    <h1>/code/{{ name }}</h1>
-    <p>Posts about {{ name }}.</p>
+<section class="profile-header">
+    <p class="terminal-kicker">gard@codeit:~$ whoami @{{ user.username }}</p>
+    <h1>@{{ user.username }}</h1>
+    <p>{{ user.bio }}</p>
+
+    <div class="profile-meta">
+        <span>{{ user.display_name }}</span>
+        <span>github/{{ user.github }}</span>
+        <span>{{ posts|length }} posts</span>
+    </div>
 </section>
 
 <section class="feed">
     {% for post in posts %}
         <article class="post-card">
             <div class="post-meta">
-                <span>/code/{{ post.subcodeit }}</span>
-                <a href="{{ url_for('profile', username=post.author) }}">@{{ post.author }}</a>
+                <a href="{{ url_for('subcodeit', name=post.subcodeit) }}">/code/{{ post.subcodeit }}</a>
                 <span class="badge">{{ post.type }}</span>
             </div>
 
             <h2>
                 <a class="post-title-link" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a>
             </h2>
+
             <p class="post-body">{{ post.body }}</p>
 
             {% if post.repository_url %}
@@ -35,13 +41,13 @@
                     <button type="submit">▲ {{ post.votes }}</button>
                 </form>
                 <span>{{ post.comments|length }} comments</span>
-                <a href="{{ url_for('post', post_id=post.id) }}">Open</a>
+                <a href="{{ url_for('post', post_id=post.id) }}">cat post</a>
             </div>
         </article>
     {% else %}
         <article class="post-card empty-state">
-            <h2>No posts here yet</h2>
-            <p>Create the first post in /code/{{ name }}.</p>
+            <h2>No posts</h2>
+            <p>This profile has not posted yet.</p>
         </article>
     {% endfor %}
 </section>

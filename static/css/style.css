@@ -99,7 +99,12 @@ a {
     font-family: var(--font-code);
 }
 
+.search-form {
+    flex: 1;
+}
+
 .search {
+    width: 100%;
     flex: 1;
     min-width: 140px;
     background: var(--surface-strong);
@@ -121,13 +126,31 @@ a {
 }
 
 .topnav {
+    align-items: center;
     display: flex;
     gap: 14px;
     color: var(--text-muted);
     font-size: 14px;
 }
 
+.topnav form {
+    margin: 0;
+}
+
+.topnav button {
+    background: transparent;
+    border: 0;
+    color: var(--text-muted);
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+}
+
 .topnav a:hover {
+    color: var(--amber);
+}
+
+.topnav button:hover {
     color: var(--amber);
 }
 
@@ -402,12 +425,57 @@ code .tok-operator {
     background: rgba(56, 189, 248, 0.04);
 }
 
+.repo-link {
+    align-items: center;
+    background: rgba(45, 212, 191, 0.06);
+    border: 1px solid var(--code-border);
+    border-radius: var(--radius);
+    color: var(--accent-hover);
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+    padding: 8px 10px;
+    width: fit-content;
+}
+
+.repo-link:hover {
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+.repo-link span {
+    color: var(--text-soft);
+    font-size: 12px;
+}
+
+.repo-link span::before {
+    content: "$ ";
+}
+
 .post-actions {
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
     color: var(--text-muted);
     font-size: 12px;
+}
+
+.post-actions form {
+    margin: 0;
+}
+
+.post-actions button {
+    background: transparent;
+    border: 0;
+    color: var(--success);
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+}
+
+.post-actions button:hover {
+    color: var(--accent-hover);
 }
 
 .post-actions span:first-child {
@@ -425,7 +493,8 @@ code .tok-operator {
     color: var(--amber);
 }
 
-.create-post form {
+.create-post form,
+.comment-form {
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -476,6 +545,11 @@ textarea {
     padding: 10px 12px;
 }
 
+.terminal-note {
+    color: var(--text-muted);
+    margin: 0;
+}
+
 .post-title-link:hover,
 .post-meta a:hover,
 .post-actions a:hover {
@@ -492,7 +566,9 @@ textarea {
     color: var(--text-muted);
 }
 
-form button {
+.create-post form button,
+.comment-form button,
+.auth-panel form button {
     background: var(--accent);
     color: #04100F;
     border: none;
@@ -503,7 +579,9 @@ form button {
     font-family: var(--font-code);
 }
 
-form button:hover {
+.create-post form button:hover,
+.comment-form button:hover,
+.auth-panel form button:hover {
     background: var(--accent-hover);
 }
 
@@ -514,6 +592,46 @@ form button:hover {
 .comment {
     margin-top: 12px;
     box-shadow: inset 3px 0 0 rgba(167, 139, 250, 0.45);
+}
+
+.comment-form {
+    margin-top: 16px;
+}
+
+.comment-form textarea {
+    min-height: 120px;
+}
+
+.profile-header {
+    background: rgba(16, 21, 29, 0.96);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: inset 2px 0 0 rgba(167, 139, 250, 0.28);
+    margin-bottom: 18px;
+    padding: 18px;
+}
+
+.profile-header h1 {
+    margin: 0 0 8px;
+}
+
+.profile-header p {
+    color: var(--text-muted);
+    margin: 0 0 14px;
+}
+
+.profile-meta {
+    color: var(--text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.profile-meta span {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2px 7px;
 }
 
 @media (max-width: 1000px) {
@@ -544,6 +662,9 @@ form button:hover {
     }
 
     .topnav {
-        display: none;
+        display: flex;
+        flex: 0 0 auto;
+        font-size: 12px;
+        gap: 10px;
     }
 }

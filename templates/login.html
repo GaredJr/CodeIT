@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}GitHub Login - CodeIT{% endblock %}
+
+{% block content %}
+<section class="create-post auth-panel">
+    <p class="terminal-kicker">gard@codeit:~$ gh auth login</p>
+    <h1>GitHub login</h1>
+
+    <form method="post" action="{{ url_for('github_login') }}">
+        <button type="submit">continue with GitHub</button>
+    </form>
+</section>
+{% endblock %}

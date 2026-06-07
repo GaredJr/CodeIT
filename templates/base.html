@@ -15,11 +15,20 @@
             <span class="logo-text">CodeIT</span>
         </a>
 
-        <input class="search" type="text" placeholder="grep posts errors repos snippets...">
+        <form class="search-form" method="get" action="{{ url_for('index') }}">
+            <input class="search" name="q" type="search" placeholder="grep posts errors repos snippets..." value="{{ request.args.get('q', '') }}">
+        </form>
 
         <nav class="topnav">
             <a href="/create">./create</a>
-            <a href="#">ssh login</a>
+            {% if current_user %}
+                <a href="{{ url_for('profile_me') }}">~{{ current_user.username }}</a>
+                <form method="post" action="{{ url_for('logout') }}">
+                    <button type="submit">exit</button>
+                </form>
+            {% else %}
+                <a href="{{ url_for('login') }}">gh login</a>
+            {% endif %}
         </nav>
     </header>
 
@@ -32,8 +41,8 @@
             </div>
 
             <a href="/">~/home</a>
-            <a href="#">~/following</a>
-            <a href="#">~/saved</a>
+            <a href="{{ url_for('profile_me') }}">~/profile</a>
+            <a href="/?q=snippet">~/snippets</a>
 
             <div class="sidebar-title">$ cd subcodeits</div>
             <a href="/code/javascript">/code/javascript</a>

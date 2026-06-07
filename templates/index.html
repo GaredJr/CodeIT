@@ -4,8 +4,8 @@
 
 {% block content %}
 <section class="feed-header">
-    <p class="terminal-kicker">gard@codeit:~$ ls feed</p>
-    <h1>Home</h1>
+    <p class="terminal-kicker">gard@codeit:~$ {% if query %}grep "{{ query }}" feed{% else %}ls feed{% endif %}</p>
+    <h1>{% if query %}Search{% else %}Home{% endif %}</h1>
 
     <div class="feed-tabs">
         <button class="active">--hot</button>
@@ -21,7 +21,7 @@
         <article class="post-card">
             <div class="post-meta">
                 <a href="{{ url_for('subcodeit', name=post.subcodeit) }}">/code/{{ post.subcodeit }}</a>
-                <span>Posted by @{{ post.author }}</span>
+                <a href="{{ url_for('profile', username=post.author) }}">@{{ post.author }}</a>
                 <span class="badge">{{ post.type }}</span>
             </div>
 
@@ -42,6 +42,13 @@
                 </div>
             {% endif %}
 
+            {% if post.repository_url %}
+                <a class="repo-link" href="{{ post.repository_url }}" target="_blank" rel="noreferrer">
+                    <span>git remote</span>
+                    {{ post.repository_url|github_repo_name }}
+                </a>
+            {% endif %}
+
             {% if post.tags %}
                 <div class="tags">
                     {% for tag in post.tags %}
@@ -51,15 +58,17 @@
             {% endif %}
 
             <div class="post-actions">
-                <span>▲ {{ post.votes }}</span>
+                <form method="post" action="{{ url_for('upvote_post', post_id=post.id) }}">
+                    <button type="submit">▲ {{ post.votes }}</button>
+                </form>
                 <span>{{ post.comments|length }} comments</span>
                 <a href="{{ url_for('post', post_id=post.id) }}">cat post</a>
             </div>
         </article>
     {% else %}
         <article class="post-card empty-state">
-            <h2>No posts yet</h2>
-            <p>Be the first to create one.</p>
+            <h2>{% if query %}No matches{% else %}No posts yet{% endif %}</h2>
+            <p>{% if query %}Try another search term.{% else %}Be the first to create one.{% endif %}</p>
         </article>
     {% endfor %}
 </section>

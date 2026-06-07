@@ -8,7 +8,7 @@
 <article class="post-card full-post">
     <div class="post-meta">
         <a href="{{ url_for('subcodeit', name=post.subcodeit) }}">/code/{{ post.subcodeit }}</a>
-        <span>Posted by @{{ post.author }}</span>
+        <a href="{{ url_for('profile', username=post.author) }}">@{{ post.author }}</a>
         <span class="badge">{{ post.type }}</span>
     </div>
 
@@ -27,6 +27,13 @@
         </div>
     {% endif %}
 
+    {% if post.repository_url %}
+        <a class="repo-link" href="{{ post.repository_url }}" target="_blank" rel="noreferrer">
+            <span>git remote</span>
+            {{ post.repository_url|github_repo_name }}
+        </a>
+    {% endif %}
+
     {% if post.tags %}
         <div class="tags">
             {% for tag in post.tags %}
@@ -34,6 +41,13 @@
             {% endfor %}
         </div>
     {% endif %}
+
+    <div class="post-actions">
+        <form method="post" action="{{ url_for('upvote_post', post_id=post.id) }}">
+            <button type="submit">▲ {{ post.votes }}</button>
+        </form>
+        <span>{{ post.comments|length }} comments</span>
+    </div>
 </article>
 
 <section class="comments">
@@ -41,7 +55,9 @@
 
     {% for comment in post.comments %}
         <article class="comment">
-            <strong>@{{ comment.author }}</strong>
+            <strong>
+                <a href="{{ url_for('profile', username=comment.author) }}">@{{ comment.author }}</a>
+            </strong>
             <p>{{ comment.body }}</p>
         </article>
     {% else %}
@@ -49,5 +65,13 @@
             <p>No comments yet.</p>
         </article>
     {% endfor %}
+
+    <form class="comment-form" method="post" action="{{ url_for('comment_post', post_id=post.id) }}">
+        <label>
+            stdin
+            <textarea name="body" placeholder="Add a comment..." required></textarea>
+        </label>
+        <button type="submit">write comment</button>
+    </form>
 </section>
 {% endblock %}
