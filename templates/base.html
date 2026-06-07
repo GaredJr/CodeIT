@@ -6,33 +6,36 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v=config.ASSET_VERSION) }}">
 </head>
 <body>
     <header class="topbar">
         <a href="/" class="logo">
-            <img src="{{ url_for('static', filename='images/LogoWide.png') }}" alt="">
-            <!--
-            <span class="logo-icon">&lt;/&gt;</span>
-            <span>CodeIT</span>
-            -->
+            <span class="logo-icon">&gt;_</span>
+            <span class="logo-text">CodeIT</span>
         </a>
 
-        <input class="search" type="text" placeholder="Search posts, errors, repos, snippets...">
+        <input class="search" type="text" placeholder="grep posts errors repos snippets...">
 
         <nav class="topnav">
-            <a href="/create">Create</a>
-            <a href="#">Login</a>
+            <a href="/create">./create</a>
+            <a href="#">ssh login</a>
         </nav>
     </header>
 
     <div class="layout">
         <aside class="sidebar">
-            <a href="/">Home</a>
-            <a href="#">Following</a>
-            <a href="#">Saved</a>
+            <div class="ascii-card">
+<pre>+--------+
+| CODEIT |
++--------+</pre>
+            </div>
 
-            <div class="sidebar-title">Subcodeits</div>
+            <a href="/">~/home</a>
+            <a href="#">~/following</a>
+            <a href="#">~/saved</a>
+
+            <div class="sidebar-title">$ cd subcodeits</div>
             <a href="/code/javascript">/code/javascript</a>
             <a href="/code/python">/code/python</a>
             <a href="/code/roblox">/code/roblox</a>
@@ -45,7 +48,7 @@
 
         <aside class="rightbar">
             <div class="panel">
-                <h3>Trending</h3>
+                <h3>./trending</h3>
                 <a href="/code/python">/code/python</a>
                 <a href="/code/react">/code/react</a>
                 <a href="/code/linux">/code/linux</a>

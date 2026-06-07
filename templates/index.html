@@ -4,14 +4,15 @@
 
 {% block content %}
 <section class="feed-header">
+    <p class="terminal-kicker">gard@codeit:~$ ls feed</p>
     <h1>Home</h1>
 
     <div class="feed-tabs">
-        <button class="active">Hot</button>
-        <button>New</button>
-        <button>Top</button>
-        <button>Unanswered</button>
-        <button>Repos</button>
+        <button class="active">--hot</button>
+        <button>--new</button>
+        <button>--top</button>
+        <button>--unanswered</button>
+        <button>--repos</button>
     </div>
 </section>
 
@@ -19,35 +20,46 @@
     {% for post in posts %}
         <article class="post-card">
             <div class="post-meta">
-                <span>{{ post.subcodeit }}</span>
+                <a href="{{ url_for('subcodeit', name=post.subcodeit) }}">/code/{{ post.subcodeit }}</a>
                 <span>Posted by @{{ post.author }}</span>
                 <span class="badge">{{ post.type }}</span>
             </div>
 
-            <h2>{{ post.title }}</h2>
+            <h2>
+                <a class="post-title-link" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a>
+            </h2>
 
-            <div class="code-preview">
-                <div class="code-header">
-                    <span>example.js</span>
-                    <button>Copy</button>
+            <p class="post-body">{{ post.body }}</p>
+
+            {% if post.code %}
+                <div class="code-preview">
+                    <div class="code-header">
+                        <span>{{ post.code_filename or "snippet.txt" }}</span>
+                        <button type="button">Copy</button>
+                    </div>
+
+                    <pre><code>{{ post.code|highlight_code }}</code></pre>
                 </div>
+            {% endif %}
 
-                <pre><code>function hello() {
-    console.log("CodeIT");
-}</code></pre>
-            </div>
-
-            <div class="tags">
-                {% for tag in post.tags %}
-                    <span>#{{ tag }}</span>
-                {% endfor %}
-            </div>
+            {% if post.tags %}
+                <div class="tags">
+                    {% for tag in post.tags %}
+                        <span>#{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
 
             <div class="post-actions">
                 <span>▲ {{ post.votes }}</span>
-                <span>💬 {{ post.comments }} comments</span>
-                <span>Save</span>
+                <span>{{ post.comments|length }} comments</span>
+                <a href="{{ url_for('post', post_id=post.id) }}">cat post</a>
             </div>
+        </article>
+    {% else %}
+        <article class="post-card empty-state">
+            <h2>No posts yet</h2>
+            <p>Be the first to create one.</p>
         </article>
     {% endfor %}
 </section>

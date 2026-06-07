@@ -36,3 +36,6 @@ pip freeze > requirements.txt
 ```
 
 Etter en stund hadde jeg en grei placeholder for nettsiden
+Slik ser den ut nå, men har ikke noe ordentlig funksjonalitet:
+<img src="/mediadokumentasjon/Home - CodeIT.jpeg" alt="Description" width="500"> 
+  

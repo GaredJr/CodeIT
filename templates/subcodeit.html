@@ -4,18 +4,36 @@
 
 {% block content %}
 <section class="feed-header">
+    <p class="terminal-kicker">gard@codeit:~$ cd /code/{{ name }}</p>
     <h1>/code/{{ name }}</h1>
     <p>Posts about {{ name }}.</p>
 </section>
 
-<article class="post-card">
-    <div class="post-meta">
-        <span>/code/{{ name }}</span>
-        <span>Posted by @example</span>
-        <span class="badge">Discussion</span>
-    </div>
+<section class="feed">
+    {% for post in posts %}
+        <article class="post-card">
+            <div class="post-meta">
+                <span>/code/{{ post.subcodeit }}</span>
+                <span>Posted by @{{ post.author }}</span>
+                <span class="badge">{{ post.type }}</span>
+            </div>
 
-    <h2>Welcome to /code/{{ name }}</h2>
-    <p>This is where posts for this subcodeit will show.</p>
-</article>
+            <h2>
+                <a class="post-title-link" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a>
+            </h2>
+            <p class="post-body">{{ post.body }}</p>
+
+            <div class="post-actions">
+                <span>▲ {{ post.votes }}</span>
+                <span>{{ post.comments|length }} comments</span>
+                <a href="{{ url_for('post', post_id=post.id) }}">Open</a>
+            </div>
+        </article>
+    {% else %}
+        <article class="post-card empty-state">
+            <h2>No posts here yet</h2>
+            <p>Create the first post in /code/{{ name }}.</p>
+        </article>
+    {% endfor %}
+</section>
 {% endblock %}

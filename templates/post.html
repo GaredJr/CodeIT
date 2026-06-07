@@ -1,42 +1,53 @@
 {% extends "base.html" %}
 
-{% block title %}Post - CodeIT{% endblock %}
+{% block title %}{{ post.title }} - CodeIT{% endblock %}
 
 {% block content %}
+<p class="terminal-kicker">gard@codeit:~$ cat post/{{ post.id }}</p>
+
 <article class="post-card full-post">
     <div class="post-meta">
-        <span>/code/react</span>
-        <span>Posted by @gard</span>
-        <span class="badge">Question</span>
+        <a href="{{ url_for('subcodeit', name=post.subcodeit) }}">/code/{{ post.subcodeit }}</a>
+        <span>Posted by @{{ post.author }}</span>
+        <span class="badge">{{ post.type }}</span>
     </div>
 
-    <h1>How do I stop this component from rerendering?</h1>
+    <h1>{{ post.title }}</h1>
 
-    <p>
-        I have a search input that calls the API every time I type.
-        What is the cleanest debounce pattern here?
-    </p>
+    <p class="post-body">{{ post.body }}</p>
 
-    <div class="code-preview">
-        <div class="code-header">
-            <span>App.tsx</span>
-            <button>Copy</button>
+    {% if post.code %}
+        <div class="code-preview">
+            <div class="code-header">
+                <span>{{ post.code_filename or "snippet.txt" }}</span>
+                <button type="button">Copy</button>
+            </div>
+
+            <pre><code>{{ post.code|highlight_code }}</code></pre>
         </div>
+    {% endif %}
 
-        <pre><code>const [query, setQuery] = useState("");
-
-useEffect(() => {
-    fetch(`/api/search?q=${query}`);
-}, [query]);</code></pre>
-    </div>
+    {% if post.tags %}
+        <div class="tags">
+            {% for tag in post.tags %}
+                <span>#{{ tag }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
 </article>
 
 <section class="comments">
-    <h2>Comments</h2>
+    <h2>stdout</h2>
 
-    <article class="comment">
-        <strong>@devuser</strong>
-        <p>You should debounce the query before calling the API.</p>
-    </article>
+    {% for comment in post.comments %}
+        <article class="comment">
+            <strong>@{{ comment.author }}</strong>
+            <p>{{ comment.body }}</p>
+        </article>
+    {% else %}
+        <article class="comment empty-state">
+            <p>No comments yet.</p>
+        </article>
+    {% endfor %}
 </section>
 {% endblock %}
