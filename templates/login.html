@@ -7,6 +7,10 @@
     <p class="terminal-kicker">gard@codeit:~$ gh auth login</p>
     <h1>GitHub login</h1>
 
+    {% if error %}
+        <div class="form-error">{{ error }}</div>
+    {% endif %}
+
     <form method="post" action="{{ url_for('github_login') }}">
         <button type="submit">continue with GitHub</button>
     </form>

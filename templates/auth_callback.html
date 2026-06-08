@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Signing in - CodeIT{% endblock %}
+
+{% block content %}
+<section class="create-post auth-panel">
+    <p class="terminal-kicker">gard@codeit:~$ gh auth status</p>
+    <h1>Signing in</h1>
+    <p id="auth-status" class="terminal-note">checking GitHub session...</p>
+</section>
+
+<script>
+    const statusElement = document.querySelector("#auth-status");
+    const hashParams = new URLSearchParams(window.location.hash.slice(1));
+    const queryParams = new URLSearchParams(window.location.search);
+    const error = hashParams.get("error_description")
+        || hashParams.get("error")
+        || queryParams.get("error_description")
+        || queryParams.get("error");
+    const accessToken = hashParams.get("access_token");
+    const refreshToken = hashParams.get("refresh_token");
+
+    async function finishLogin() {
+        if (error) {
+            statusElement.textContent = `auth failed: ${error}`;
+            return;
+        }
+
+        if (!accessToken) {
+            statusElement.textContent = "auth failed: missing Supabase access token";
+            return;
+        }
+
+        try {
+            const response = await fetch("{{ url_for('auth_session') }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    access_token: accessToken,
+                    refresh_token: refreshToken,
+                }),
+            });
+            const data = await response.json();
+
+            if (!response.ok) {
+                statusElement.textContent = `auth failed: ${data.error || response.status}`;
+                return;
+            }
+
+            window.location.assign(data.redirect || "{{ url_for('profile_me') }}");
+        } catch (caughtError) {
+            statusElement.textContent = "auth failed: unable to reach CodeIT";
+        }
+    }
+
+    finishLogin();
+</script>
+{% endblock %}
