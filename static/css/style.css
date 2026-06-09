@@ -673,3 +673,75 @@ textarea {
         gap: 10px;
     }
 }
+
+
+#footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 10px;
+    color: var(--text-muted);
+}
+
+#footer a:hover {
+    color: var(--accent-hover);
+}
+
+.policy-page {
+    background: rgba(16, 21, 29, 0.96);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: inset 2px 0 0 rgba(45, 212, 191, 0.24);
+    line-height: 1.65;
+    padding: 22px;
+}
+
+.policy-page h1 {
+    margin: 0 0 8px;
+}
+
+.policy-page h2 {
+    border-top: 1px solid var(--border);
+    color: var(--accent-hover);
+    margin: 28px 0 10px;
+    padding-top: 18px;
+}
+
+.policy-page h3 {
+    color: var(--amber);
+    margin: 18px 0 8px;
+}
+
+.policy-page p,
+.policy-page li {
+    color: var(--text-muted);
+}
+
+.policy-page a {
+    color: var(--cyan);
+}
+
+.policy-page a:hover {
+    color: var(--accent-hover);
+}
+
+.policy-page table {
+    border-collapse: collapse;
+    margin: 14px 0;
+    width: 100%;
+}
+
+.policy-page th,
+.policy-page td {
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 9px 10px;
+    text-align: left;
+}
+
+.policy-page th {
+    color: var(--text);
+    background: var(--surface-strong);
+}

@@ -43,11 +43,11 @@ http://127.0.0.1:5002
 
 Sjekkliste:
 
-- [ ] Forsiden laster.
-- [ ] Posts vises fra Supabase.
-- [ ] Create-siden fungerer.
-- [ ] Login-siden vises.
-- [ ] `/auth/callback` viser en ryddig feilmelding hvis man besøker den direkte.
+- [x] Forsiden laster.
+- [x] Posts vises fra Supabase.
+- [x] Create-siden fungerer.
+- [x] Login-siden vises.
+- [x] `/auth/callback` viser en ryddig feilmelding hvis man besøker den direkte.
 
 ---
 

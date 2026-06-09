@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy - CodeIT{% endblock %}
+
+{% block content %}
+<section class="policy-page">
+    <p class="terminal-kicker">gard@codeit:~$ cat privacy-policy.md</p>
+    <h1>Privacy Policy for CodeIT</h1>
+    <p class="terminal-note">Last updated: 09.06.2026</p>
+
+    <p>
+        CodeIT is an exam project and prototype for a code-focused social platform. This privacy policy explains what data the project may collect, why it is used, and how it is handled.
+    </p>
+
+    <p>
+        This document is written for project documentation and demonstration purposes. Before using CodeIT as a real public service, the privacy policy should be reviewed and adapted for production use.
+    </p>
+
+    <h2>1. Who is responsible</h2>
+    <p>CodeIT is developed as an exam project by the project owner.</p>
+    <p>For questions about privacy or data handling, contact:</p>
+    <pre><code>TODO: Add contact email or GitHub profile</code></pre>
+
+    <h2>2. What data CodeIT collects</h2>
+    <h3>Account data</h3>
+    <p>If a user logs in with GitHub, CodeIT may store:</p>
+    <ul>
+        <li>GitHub user ID or Supabase user ID</li>
+        <li>GitHub username</li>
+        <li>Display name</li>
+        <li>Avatar URL</li>
+        <li>Basic profile metadata returned through GitHub/Supabase Auth</li>
+    </ul>
+    <p>CodeIT does not store GitHub passwords.</p>
+
+    <h3>Content data</h3>
+    <p>When users interact with the platform, CodeIT may store:</p>
+    <ul>
+        <li>Posts</li>
+        <li>Code snippets</li>
+        <li>Post titles and descriptions</li>
+        <li>Tags</li>
+        <li>GitHub repository links added to posts</li>
+        <li>Comments</li>
+        <li>Upvotes</li>
+        <li>Profile text such as bio, if this feature is enabled</li>
+    </ul>
+
+    <h3>Technical data</h3>
+    <p>The server and third-party providers may process technical data such as:</p>
+    <ul>
+        <li>IP address</li>
+        <li>Browser/user agent</li>
+        <li>Request URLs</li>
+        <li>Login redirect data</li>
+        <li>Basic server logs</li>
+        <li>Error logs</li>
+    </ul>
+    <p>This is used for security, debugging and keeping the service available.</p>
+
+    <h2>3. Why the data is used</h2>
+    <p>CodeIT uses data to:</p>
+    <ul>
+        <li>Show posts, comments and code snippets</li>
+        <li>Let users create and interact with content</li>
+        <li>Connect posts to GitHub repositories</li>
+        <li>Let users log in with GitHub</li>
+        <li>Show user profiles</li>
+        <li>Prevent basic misuse</li>
+        <li>Debug errors during development</li>
+        <li>Demonstrate fullstack functionality for the exam project</li>
+    </ul>
+
+    <h2>4. GitHub login</h2>
+    <p>CodeIT uses GitHub login through Supabase Auth.</p>
+    <p>When a user chooses to log in with GitHub:</p>
+    <pre><code>CodeIT -> Supabase Auth -> GitHub -> Supabase Auth -> CodeIT</code></pre>
+    <p>
+        GitHub confirms the user's identity, and Supabase returns an authentication session to CodeIT. CodeIT then stores only the information needed to identify the user inside the app.
+    </p>
+    <p>CodeIT does not receive or store the user's GitHub password.</p>
+
+    <h2>5. Supabase</h2>
+    <p>CodeIT uses Supabase for:</p>
+    <ul>
+        <li>PostgreSQL database</li>
+        <li>Authentication</li>
+        <li>API access to stored data</li>
+    </ul>
+    <p>
+        Supabase stores application data such as profiles, posts, comments and votes. Access to this data should be protected with database rules such as Row Level Security.
+    </p>
+    <p>Supabase's own privacy and security documentation applies to their handling of data as a service provider.</p>
+
+    <h2>6. Cloudflare</h2>
+    <p>CodeIT may use Cloudflare Tunnel to make the app available online from the server PC.</p>
+    <p>
+        Cloudflare may process technical traffic data needed to route requests, provide security features and keep the tunnel working.
+    </p>
+    <p>Cloudflare's own privacy policy applies to their handling of traffic and service data.</p>
+
+    <h2>7. Legal basis</h2>
+    <p>For a real public deployment, CodeIT should define a clear legal basis for processing personal data.</p>
+    <p>For this exam prototype, the intended legal bases would likely be:</p>
+    <ul>
+        <li>User consent, when logging in or submitting content</li>
+        <li>Legitimate interest, for basic security, debugging and service operation</li>
+    </ul>
+    <p><strong>TODO:</strong> Review this section before production use.</p>
+
+    <h2>8. Data sharing</h2>
+    <p>CodeIT does not sell user data.</p>
+    <p>Data may be processed by these service providers:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Provider</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Supabase</td>
+                <td>Database, authentication and API</td>
+            </tr>
+            <tr>
+                <td>GitHub</td>
+                <td>OAuth login</td>
+            </tr>
+            <tr>
+                <td>Cloudflare</td>
+                <td>Tunnel, routing and security</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>If CodeIT becomes a real public service, the project should review each provider's data processing terms and subprocessors.</p>
+
+    <h2>9. Data retention</h2>
+    <p>CodeIT keeps user-generated content while the project is active, unless it is deleted manually or removed by the project owner.</p>
+    <p>For a production version, CodeIT should define:</p>
+    <ul>
+        <li>How long logs are stored</li>
+        <li>How users can delete their accounts</li>
+        <li>How users can delete posts/comments</li>
+        <li>How backups are handled</li>
+    </ul>
+    <p><strong>TODO:</strong> Add exact retention periods before production use.</p>
+
+    <h2>10. User rights</h2>
+    <p>Depending on applicable law, users may have rights to:</p>
+    <ul>
+        <li>Request access to their personal data</li>
+        <li>Correct inaccurate data</li>
+        <li>Request deletion of data</li>
+        <li>Object to certain processing</li>
+        <li>Request a copy of their data</li>
+    </ul>
+    <p>For this exam prototype, these requests must currently be handled manually by the project owner.</p>
+    <p><strong>TODO:</strong> Add a real contact method and process if the project goes public.</p>
+
+    <h2>11. Security</h2>
+    <p>CodeIT uses or plans to use:</p>
+    <ul>
+        <li>GitHub OAuth instead of storing passwords</li>
+        <li>Supabase Auth for authentication</li>
+        <li>Environment variables for secrets</li>
+        <li><code>.env</code> ignored from Git</li>
+        <li>Supabase Row Level Security for database access control</li>
+        <li>Cloudflare Tunnel instead of exposing the server directly through port forwarding</li>
+    </ul>
+
+    <p>Known limitations:</p>
+    <ul>
+        <li>The project is still a prototype.</li>
+        <li>It does not yet have full moderation tools.</li>
+        <li>It does not yet have automated privacy/account deletion flows.</li>
+        <li>Logging and retention policies are not production-ready.</li>
+    </ul>
+
+    <h2>12. Children's privacy</h2>
+    <p>CodeIT is not intentionally designed for children or for collecting data from children.</p>
+    <p>If the project becomes public, the intended audience and age requirements should be clarified.</p>
+
+    <h2>13. Changes to this policy</h2>
+    <p>This privacy policy may be updated as the project changes.</p>
+    <p>For the exam version, changes should be documented in the project log or Git history.</p>
+
+    <h2>14. Useful provider links</h2>
+    <ul>
+        <li><a href="https://supabase.com/privacy" target="_blank" rel="noreferrer">Supabase Privacy Policy</a></li>
+        <li><a href="https://supabase.com/docs/guides/security" target="_blank" rel="noreferrer">Supabase Security Docs</a></li>
+        <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noreferrer">GitHub Privacy Statement</a></li>
+        <li><a href="https://www.cloudflare.com/policies/privacy/" target="_blank" rel="noreferrer">Cloudflare Privacy Policy</a></li>
+    </ul>
+</section>
+{% endblock %}

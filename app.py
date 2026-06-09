@@ -809,5 +809,10 @@ def profile(username):
     return render_template("profile.html", user=user, posts=get_user_posts(username))
 
 
+@app.route("/privacy")
+def privacy_policy():
+    return render_template("privacypolicy.html")
+
+
 if __name__ == "__main__":
     app.run(debug=os.environ.get("FLASK_DEBUG") == "1")
