@@ -96,11 +96,34 @@ Mac  ->  Git / SSH  ->  Ubuntu Server  ->  Flask / JS / Supabase
 
 ```text
 [x] Planlegging
-[-] Design
-[-] Frontend
-[ ] Backend
-[ ] Database
-[ ] Hosting
+[x] Design
+[x] Frontend
+[-] Backend
+[-] Database
+[-] Hosting
 [ ] Testing
 [ ] Ferdigstilling
 ```
+
+---
+
+## EKSAMENSDOKUMENTASJON
+
+Disse filene brukes som placeholders for å vise teknisk kompetanse, refleksjon og arbeidsprosess i prosjektet:
+
+| Dokument | Hva det skal vise |
+|---|---|
+| [docs/ARKITEKTUR.md](docs/ARKITEKTUR.md) | Hvordan frontend, Flask, Supabase, GitHub Auth, Ubuntu-server og Cloudflare henger sammen |
+| [docs/DATABASE.md](docs/DATABASE.md) | Databasemodell, tabeller, relasjoner, RLS og hvordan data lagres |
+| [docs/SIKKERHET_OG_DRIFT.md](docs/SIKKERHET_OG_DRIFT.md) | Miljøvariabler, secrets, OAuth, hosting, tunnel og produksjonsvurderinger |
+| [docs/TESTPLAN.md](docs/TESTPLAN.md) | Hva som skal testes, hvordan det testes, og kjente begrensninger |
+
+### Kompetanse jeg vil vise
+
+- Fullstack-utvikling med Flask, HTML, CSS, JavaScript og Supabase.
+- Databasedesign med profiler, posts, kommentarer og votes.
+- Autentisering via GitHub OAuth gjennom Supabase Auth.
+- Sikker bruk av miljøvariabler og hemmelige nøkler.
+- Hosting på egen Ubuntu-server med Cloudflare Tunnel.
+- Iterativ utviklingsprosess dokumentert i dagloggene.
+- Refleksjon rundt begrensninger, sikkerhet, brukervennlighet og videre arbeid.
