@@ -22,3 +22,43 @@ copyButtons.forEach((button) => {
         }, 1200);
     });
 });
+
+const upvoteForms = document.querySelectorAll(".js-upvote-form");
+
+upvoteForms.forEach((form) => {
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const button = form.querySelector("button");
+        if (!button || button.disabled) {
+            return;
+        }
+
+        const previousText = button.innerText;
+        button.disabled = true;
+        button.innerText = "▲ ...";
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                headers: {
+                    "X-Requested-With": "fetch",
+                    "Accept": "application/json",
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error("Upvote failed");
+            }
+
+            const data = await response.json();
+            button.innerText = `▲ ${data.votes}`;
+        } catch {
+            button.innerText = previousText;
+            form.submit();
+            return;
+        }
+
+        button.disabled = false;
+    });
+});

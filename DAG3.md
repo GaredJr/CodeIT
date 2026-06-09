@@ -15,3 +15,16 @@ Installerte alle requirements via requirements.txt:
 
 Også fikk jeg siden hosta opp på nettet igjennom-
 http://172.31.1.4:9876/
+
+
+Deretter startet jeg å jobbe med å sette opp en typ script som ville kjøre hver gang nettet går opp, for å starte opp hostingen av siden.
+Etter litt research på stackoverflow og chatgpt kom jeg frem til en måte å gjøre dette på.
+
+For dette lagde jeg to scripts, en til å sjekke om nettet er oppe, som kjører en annen script når det er oppe:
+<img src="/mediadokumentasjon/Screenshot 2026-06-09 at 10.42.32.png" alt="Description" width="500"> 
+<img src="/mediadokumentasjon/Screenshot 2026-06-09 at 10.41.13.png" alt="Description" width="500">
+
+Da testa jeg scriptsa, og det fungerte fint.
+<img src="/mediadokumentasjon/Screenshot 2026-06-09 at 10.40.37.png" alt="Description" width="500"> 
+
+Nå skal jeg ordne noen databasekoblinger som ikke fungerer helt enda.

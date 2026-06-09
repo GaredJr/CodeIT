@@ -134,3 +134,10 @@ Disse filene brukes som placeholders for å vise teknisk kompetanse, refleksjon 
 :<br>
 <span style="color: green; font-weight: 600;">Få siden opp og hosta på ubuntu server maskinen.</span>
 </p>
+
+<p style="color: blue; border-style: solid; padding: 15px; border-radius: 5px; border-color: black;">
+<time datetime="2026-06-09T10:35">09.06.2026 - 10:35</time>
+:<br>
+<span style="color: green; font-weight: 600;">Lage og ferdigstille en startup script som kjører dersom netter går opp.</span>
+</p>
+

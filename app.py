@@ -468,18 +468,34 @@ def add_comment_record(post_id, author, body, author_id=None):
     )
 
 
+def count_votes_for_post(post_id):
+    if not supabase_enabled():
+        selected_post = find_memory_post(post_id)
+        return selected_post["votes"] if selected_post else 0
+
+    rows = supabase_request(
+        "GET",
+        "post_votes",
+        {
+            "select": "id",
+            "post_id": f"eq.{post_id}",
+        },
+    )
+    return len(rows)
+
+
 def toggle_vote_record(post_id, actor_key):
     if not supabase_enabled():
         selected_post = find_memory_post(post_id)
         if selected_post is None:
-            return
+            return 0
         if actor_key in selected_post["voted_by"]:
             selected_post["voted_by"].remove(actor_key)
             selected_post["votes"] -= 1
         else:
             selected_post["voted_by"].add(actor_key)
             selected_post["votes"] += 1
-        return
+        return selected_post["votes"]
 
     existing_votes = supabase_request(
         "GET",
@@ -508,6 +524,8 @@ def toggle_vote_record(post_id, actor_key):
             },
             prefer="return=minimal",
         )
+
+    return count_votes_for_post(post_id)
 
 
 def get_next_post_id():
@@ -674,7 +692,10 @@ def upvote_post(post_id):
     if selected_post is None:
         abort(404)
 
-    toggle_vote_record(post_id, get_actor_key())
+    votes = toggle_vote_record(post_id, get_actor_key())
+
+    if request.headers.get("X-Requested-With") == "fetch":
+        return jsonify({"post_id": post_id, "votes": votes})
 
     return redirect(request.referrer or url_for("post", post_id=post_id))
 

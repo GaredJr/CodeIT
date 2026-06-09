@@ -31,7 +31,7 @@
             {% endif %}
 
             <div class="post-actions">
-                <form method="post" action="{{ url_for('upvote_post', post_id=post.id) }}">
+                <form class="js-upvote-form" method="post" action="{{ url_for('upvote_post', post_id=post.id) }}">
                     <button type="submit">▲ {{ post.votes }}</button>
                 </form>
                 <span>{{ post.comments|length }} comments</span>

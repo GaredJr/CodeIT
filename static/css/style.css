@@ -478,6 +478,11 @@ code .tok-operator {
     color: var(--accent-hover);
 }
 
+.post-actions button:disabled {
+    color: var(--text-soft);
+    cursor: wait;
+}
+
 .post-actions span:first-child {
     color: var(--success);
 }
