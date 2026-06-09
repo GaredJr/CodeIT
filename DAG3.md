@@ -28,3 +28,11 @@ Da testa jeg scriptsa, og det fungerte fint.
 <img src="/mediadokumentasjon/Screenshot 2026-06-09 at 10.40.37.png" alt="Description" width="500"> 
 
 Nå skal jeg ordne noen databasekoblinger som ikke fungerer helt enda.
+
+Etter litt research med stackoverflow og chatgpt, fikk jeg ordna et problem hvor votes og comments_count i databasen ikke synca korrekt.
+
+Deretter ville jeg implementere slik at hvis du søker på et repository /code/et-eller-annet, så kommer du inn på den repositorien.
+
+Det gjorde jeg ved å legge inn denne if setninga inn i search funksjonen:
+
+<img src="/mediadokumentasjon/Screenshot 2026-06-09 at 12.28.28.png" alt="Description" width="500"> 

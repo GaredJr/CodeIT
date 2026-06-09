@@ -611,6 +611,10 @@ def index():
     query = request.args.get("q", "").strip()
     posts = list_posts(query=query)
 
+    if query.startswith("/code/"):
+        subcodeit_name = normalize_subcodeit(query)
+        return redirect(url_for("subcodeit", name=subcodeit_name))
+
     return render_template("index.html", posts=posts, query=query)
 
 
