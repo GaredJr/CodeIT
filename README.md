@@ -127,3 +127,10 @@ Disse filene brukes som placeholders for å vise teknisk kompetanse, refleksjon 
 - Hosting på egen Ubuntu-server med Cloudflare Tunnel.
 - Iterativ utviklingsprosess dokumentert i dagloggene.
 - Refleksjon rundt begrensninger, sikkerhet, brukervennlighet og videre arbeid.
+
+# OPPDATERINGER
+<p style="color: blue; border-style: solid; padding: 15px; border-radius: 5px; border-color: black;">
+<time datetime="2026-06-09T09:40">09.06.2026 - 09:40</time>
+:<br>
+<span style="color: green; font-weight: 600;">Få siden opp og hosta på ubuntu server maskinen.</span>
+</p>
